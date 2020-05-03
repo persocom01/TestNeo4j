@@ -103,3 +103,55 @@ A n-clan is one where the diameter of the clan is no greater than n. Probably a 
 
 k-core
 k-core is a method if defining communities through density. In k-core, every node is connected to at least k other nodes in the community. The connection need not be direct. As such, when k=1, the subgraph is completely detached from every other non-community node in the graph.
+
+### Modularity
+
+Modularity is a measure of community quality whereby a graph is more modular the more edges communities within it have than would be expected if edges were randomly distributed.
+* 1 >= modularity >= -0.5
+* The expected distribution of edges depends on a probability model. For instance, a model could postulate that the probability should be proportional to the product of the degrees between two nodes.
+
+The Louvain method is a popular algorithm for community detection in networks which optimizes modularity locally on all nodes then groups each community found into a single node and repeats the process.
+* This is seen by it classifying each node as belonging to a certain community based on whether that classification will improve the modularity of the graph.
+* At the beginning the number of #communities = #nodes.
+* Node classification continues until the algorithm decides that it can no longer optimize modularity locally, then it condenses the communities into single representative nodes and repeats the process.
+* There will always be one false community, which groups nodes that do not belong to any community.
+
+### Community evolution
+
+There are generally considered to be 6 kinds of evolution, which comprise 3 kinds and their opposites:
+1. Growth & contraction.
+2. Merging & splitting.
+Normally preceded by a growth of edges between two groups (merger), or a growth of edges within subgroups and decrease of edges outside the subgroups (split). The autocorrelation between #common nodes within the group / #nodes in the graph between two time periods can be calculated to give a picture of the evolution of the group over time. This number is 1 if the community does not change, <1 if the community is smaller. Stationarity is something of a sum of autocorrelations over multiple time periods and gives the fractional change in group membership over time. A large change is called a burst.
+4. Birth & death.
+
+## Centrality analytics
+Centrality analytics is concerned with identification of important nodes in a graph.
+
+A node can be said to be central (depending on requirements) if:
+* It can reach the most #nodes quickly.
+* Removed, causes the most disruption to a network.
+* It has the most #connections to all other nodes.
+
+### Centralization
+Centralization is the measure of centrality within a network. As the number of nodes with high centrality increases, the centralization of the network decreases, because there is no single master node in the network. It can be calculated by:
+* sum(Cmax - Cnode) / Cmax
+Where C is centrality.
+
+### Measurement
+There are more than 30 ways to measure centrality, some of which are:
+1. Degree centrality.
+* Degree of node / Maximum possible degree of node (which is the total number of nodes assuming each node can only be connected to another by 1 edge)
+Instead of measuring degree centrality of individual nodes, one can also measure the centrality of a group as a whole by measuring the edges connected to the group / number of non member nodes.
+2. Closeness centrality.
+* sum(shortest distance from all other nodes)
+The lower the number, the more central. Can be said to be a measure of how the time taken for something to flow through a network if it enters at the node measured.
+3. Betweenness centrality.
+* shortest paths going through node / shortest paths in graph
+Shortest path being the shortest paths between two nodes. If there is more than one shortest path between two nodes, each node in the paths receives a score 1 / #paths for each path it is a member of. This is repeated for all other nodes to calculate #paths going through each node.
+Useful when something doesn't flow into a network proportional to distance between a node to the others, but goes prefers to go through intermediates.
+4. Eigenvector centrality.
+* sum(Cneighbors)
+Degree centrality normalized by the centrality of a node's neighbors.
+* Pagerank, a power iteration algorithm
+Idea by the founders of google.
+5. Katz centrality.
