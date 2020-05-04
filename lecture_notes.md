@@ -129,7 +129,13 @@ Centrality analytics is concerned with identification of important nodes in a gr
 
 A node can be said to be central (depending on requirements) if:
 * It can reach the most #nodes quickly.
+Measured by finding nodes that can reach the most other nodes in k steps.
+R = 1 - sum(1/D)/n
+D is distance, because nodes that need more steps should be weighted less than nodes that can be immediately reached. n is the number of nodes.
 * Removed, causes the most disruption to a network.
+Measured using the fragmentation metric:
+F = 1 - (sum(1/D)/#np)
+Where D is the distance between two nodes, so 1/D is bigger the closer the nodes are. Summed and divided by the number of np (#node pairs), we get a sort of mean closeness metric. Now 1 - this metric would get you the degree of fragmentation.
 * It has the most #connections to all other nodes.
 
 ### Centralization
@@ -152,6 +158,6 @@ Useful when something doesn't flow into a network proportional to distance betwe
 4. Eigenvector centrality.
 * sum(Cneighbors)
 Degree centrality normalized by the centrality of a node's neighbors.
-* Pagerank, a power iteration algorithm
-Idea by the founders of google.
+* Pagerank, a power iteration algorithm.
+Idea by the founders of google. It takes directionality of edges into account, whereby an edge into a node increases its centrality but not that of the node linking to it. It has been demonstrated to work well in a map reduce framework.
 5. Katz centrality.
