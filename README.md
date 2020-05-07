@@ -36,7 +36,19 @@ cat ./bitnami_credentials
 
 Alternatively, right clicking the AWS instance in AWS console > instance settings > get system log will open a window that contains the username and password. This has to be done 24hrs from first boot.
 
+To end the connection, enter:
+
+```
+exit
+```
+
 ## Issuing commands
+
+To determine the edition and version of the neo4j instance, open the cypher shell and enter:
+
+```
+call dbms.components() yield name, versions, edition unwind versions as version return name, version, edition;
+```
 
 ### Neo4j admin
 
