@@ -13,6 +13,7 @@ A neo4j testing playground.
 ```
 bin\neo4j console
 ```
+
 Use ctrl + c to exit.
 
 3. In case of "error: missing JVM", download and install JRE or JDK (JRE but with developer tools) of the appropriate version here: https://www.oracle.com/java/technologies/javase-downloads.html
