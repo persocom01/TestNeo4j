@@ -8,7 +8,7 @@ The neo4j python driver can be installed via cmd by entering one of the followin
 
 ```
 pip install neo4j
-pip install py2neo
+conda install -c conda-forge py2neo
 ```
 
 * neo4j is the official neo4j driver.
