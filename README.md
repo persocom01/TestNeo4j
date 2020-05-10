@@ -4,6 +4,12 @@ A neo4j testing playground.
 
 ## Installation
 
+The neo4j python driver can be installed via cmd by entering:
+
+```
+pip install neo4j
+```
+
 ### Local machine
 
 1. Download the community (free) version and unpack it into a folder of your choice: https://neo4j.com/download-center/#community
