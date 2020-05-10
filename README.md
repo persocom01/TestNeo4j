@@ -8,7 +8,7 @@ A neo4j testing playground.
 
 1. Download the community (free) version and unpack it into a folder of your choice: https://neo4j.com/download-center/#community
 
-2. To run the database server, open cmd in the folder and enter:
+2. To run the database server, open cmd in the folder (left click the empty part of the address bar in explorer and enter cmd) and enter in cmd:
 
 ```
 bin\neo4j console
@@ -16,9 +16,17 @@ bin\neo4j console
 
 Use ctrl + c to exit.
 
-3. In case of "error: missing JVM", download and install JRE or JDK (JRE but with developer tools) of the appropriate version here: https://www.oracle.com/java/technologies/javase-downloads.html
+In case of "error: missing JVM", download and install JRE or JDK (JRE but with developer tools) of the appropriate version (ver 11 for neo4j 4.0.4) here: https://www.oracle.com/java/technologies/javase-downloads.html
 
-Then run the command from 2 again. For more, see: https://neo4j.com/docs/operations-manual/current/installation/windows/
+You might also need to enter path for java.exe into windows environmental variables. Java can normally be found at:
+
+```
+C:\Program Files\Java\jre_or_jdk-version\bin
+```
+
+Then run the cmd command again. For more, see: https://neo4j.com/docs/operations-manual/current/installation/windows/
+
+3. Visit the neo4j web app using a web browser at localhost:7474. (shields down)
 
 ### Bitnami neo4j community edition on AWS
 
