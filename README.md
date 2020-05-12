@@ -58,6 +58,12 @@ which gives the user permission to read the file (4) and no permissions (0) to t
 ssh -i keyname.pem bitnami@aws_instance_public_dns
 ```
 
+To remove the added ip from the known hosts list, use:
+
+```
+$ ssh-keygen -R server_ip_address
+```
+
 We also need the application login username and password. To get this, enter the following command when connected to the server:
 
 ```

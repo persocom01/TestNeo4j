@@ -5,6 +5,8 @@ import py2neo as p2n
 with open(r'.\keys.json') as f:
     keys = json.load(f)
 
+# If the server is not specified, it appears to use bolt://localhost:7687 by
+# default.
 gdb = p2n.Graph(
     "bolt://localhost:7687",
     user=keys['user'],
@@ -22,7 +24,8 @@ create (N1:ToyNode {name: 'Tom'}) - [:ToyRelation {relationship: 'knows'}] -> (N
 '''
 print(gdb.run(command).to_table())
 
-# Displays the graph as a table.
+# Displays the graph as a table. It's much better to see it on the graph app
+# using the browser.
 command = '''
 match (n:ToyNode)-[r]-(m) return n, r, m
 '''
