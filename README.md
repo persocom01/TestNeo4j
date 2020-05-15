@@ -36,11 +36,31 @@ C:\Program Files\Java\jre_or_jdk-version\bin
 
 Then run the cmd command again. For more, see: https://neo4j.com/docs/operations-manual/current/installation/windows/
 
-3. Visit the neo4j web app using a web browser at localhost:7474. (shields down)
+The neo4j web app can now be accessed using a web browser at localhost:7474. (shields down)
+
+#### Plugin installation
+
+1. Download the plugin from the same place you got the community edition: https://neo4j.com/download-center/#community
+
+2. Unpack the .jar file into neo4j's plugins folder.
+
+3. Navigate to the conf folder and open neo4j.conf in notepad. Find the following line, remove the # from the following line and add gds.* to it:
+
+```
+dbms.security.procedures.unrestricted=gds.*
+```
+
+In addition, it is necessary to add gds.* to the whitelist if you use one:
+
+```
+dbms.security.procedures.whitelist=apoc.coll.*,apoc.load.*,gds.*
+```
+
+4. Restart the neo4j server. You may now use the plugin apis from the browser interface.
 
 ### Bitnami neo4j community edition on AWS
 
-1. Spin up an AWS EC2 instance by choosing the appropriate BitNami neo4j AMI from this list https://bitnami.com/stack/neo4j/cloud/aws/amis
+1. Spin up an AWS EC2 instance by choosing the appropriate BitNami neo4j AMI from this list: https://bitnami.com/stack/neo4j/cloud/aws/amis
 
 2. Download the .pem key.
 
@@ -86,12 +106,24 @@ To determine the edition and version of the neo4j instance, open the cypher shel
 call dbms.components() yield name, versions, edition unwind versions as version return name, version, edition;
 ```
 
+The community edition of neo4j only allows 1 database, so any additional will require usage of images.
+
+When importing data into neo4j without python, the data must be located in neo4j_path/import/
+
+Neo4j commands are case sensitive.
+
 ### Neo4j admin
 
-Neo4j admin is a tool used to manage the neo4j instance. It can be accessed after connecting to the ec2 server and entering:
+Neo4j admin is a tool used to manage the neo4j instance. It can be accessed on the local machine using cmd from the neo4j folder and entering:
 
 ```
-neo4j-admin command
+bin\neo4j-admin
+```
+
+For ec2 servers, connect tot he server and enter:
+
+```
+neo4j-admin
 ```
 
 Commands found here: https://neo4j.com/docs/operations-manual/current/tools/neo4j-admin/
