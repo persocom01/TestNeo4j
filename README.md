@@ -24,7 +24,7 @@ conda install -c conda-forge py2neo
 bin\neo4j console
 ```
 
-Use ctrl + c to exit.
+Use ctrl c to exit.
 
 In case of "error: missing JVM", download and install JRE or JDK (JRE but with developer tools) of the appropriate version (ver 11 for neo4j 4.0.4) here: https://www.oracle.com/java/technologies/javase-downloads.html
 
